@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Absent</title>
 
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <!-- Bootstrap Core CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
   <!-- Material Design Bootstrap -->
@@ -14,6 +17,86 @@
   <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
   <!-- Google fonts - Raleway -->
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+</head>
+
+<body>
+  <section id="chart-section">
+    <div class="header">The most absent teacher goes to. . . </div>
+    <div class="chart-wrapper">
+      <canvas id="chart"></canvas>
+    </div>
+  </section>
+
+  <section id="table-section">
+    <table id="absenceTable" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th class="th-sm">Name</th>
+          <th class="th-sm">Position</th>
+          <th class="th-sm">Absences</th>
+          <th class="th-sm">All Day</th>
+          <th class="th-sm">Partial Day</th>
+        </tr>
+      </thead>
+    </table>
+  </section>
+
+  <div class="text-center">
+        <button class="btn peach-gradient" onclick="scrollToSection('chart-section')">Back to Top</button>
+  </div>
+
+  <section id="details-section">
+    <div class="details-wrapper"></div>
+  </section>
+
+  <!-- Include Handlebars from a CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+  <script id="absenceTableBodyTemplate" type="text/x-handlebars-template">
+    <tbody>
+      {{#each data}}
+      <tr>
+        <td class="text-primary" onclick="showDetails('{{this.name}}')">{{this.name}}</td>
+        <td >{{this.position}}</td>
+        <td>{{this.total}}</td>
+        <td>{{this.all}}</td>
+        <td>{{this.partial}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </script>
+
+  <script id="detailsTemplate" type="text/x-handlebars-template">
+    <div class="card">
+      <h5 class="card-header h5">{{data.name}}, {{data.position}}</h5>
+      <div class="card-body">
+
+        <div class="treeview-animated mx-4 my-4">
+          <ul class="treeview-animated-list mb-3">
+            {{#each data.absence}}
+            <li class="treeview-animated-items">
+              <a class="closed">
+                <i class="fas fa-angle-right"></i>
+                <span>{{inc @index}}) {{this.date}}</span>
+              </a>
+              <ul class="nested">
+                <li>
+                  <div class="treeview-animated-element"><i class="far fa-clock ic-w mr-1"></i>Time : {{time this.isPartial}}
+                </li>
+                <li>
+                  <div class="treeview-animated-element"><i class="far fa-comment-alt ic-w mr-1"></i>Note: {{note this.note}}
+                </li>
+              </ul>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </script>
 
   <!-- Axios -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -31,44 +114,6 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
   <script src="assets/scripts/main.js"></script>
-
-  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
-</head>
-
-<body>
-  <div class="header">The most absent teacher goes to. . . </div>
-  <div class="chart-wrapper">
-    <canvas id="chart"></canvas>
-  </div>
-
-  <table id="absenceTable" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-    <thead>
-      <tr>
-        <th class="th-sm">Name</th>
-        <th class="th-sm">Position</th>
-        <th class="th-sm">Absences</th>
-        <th class="th-sm">All Day</th>
-        <th class="th-sm">Partial Day</th>
-      </tr>
-    </thead>
-  </table>
-
-  <!-- Include Handlebars from a CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-
-  <script id="absenceTableBody" type="text/x-handlebars-template">
-    <tbody>
-      {{#each data}}
-      <tr>
-        <td>{{this.name}}</td>
-        <td>{{this.position}}</td>
-        <td>{{this.total}}</td>
-        <td>{{this.all}}</td>
-        <td>{{this.partial}}</td>
-      </tr>
-      {{/each}}
-    </tbody>
-  </script>
 </body>
 
 </html>

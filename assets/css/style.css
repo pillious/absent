@@ -29,7 +29,7 @@ html body .chart-wrapper {
 }
 
 html body div.dataTables_wrapper {
-  padding: 3rem 10vw;
+  padding: 3rem 10vw 1rem;
 }
 
 @media (max-width: 861px) {
@@ -54,6 +54,10 @@ html body div.dataTables_wrapper {
   html body div.dataTables_wrapper div.dataTables_filter label {
     font-size: 12px;
   }
+}
+
+html body div.dataTables_wrapper .table tr td:first-child:hover {
+  cursor: pointer;
 }
 
 @media (max-width: 861px) {
@@ -99,6 +103,10 @@ html body div.dataTables_wrapper div.dataTables_paginate span a.paginate_button.
   -webkit-transition: all .2s linear;
   transition: all .2s linear;
   border-radius: .125rem;
+}
+
+html body .details-wrapper {
+  padding: 1rem 25vw 3rem;
 }
 
 .form-control {

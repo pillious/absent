@@ -1,5 +1,6 @@
 var ctx;
 var chart;
+var rawData;
 
 $(document).ready(function () {
     main()
@@ -8,12 +9,14 @@ $(document).ready(function () {
 async function main() {
     // Get data via. API
     resp = await axios.get("https://absence-api.vercel.app/")
-    allData = parseData(resp.data.data)
+    rawData = resp.data.data;
+    allData = parseData(rawData)
     createTableBody(allData);
 
     // only faculty whos position includes 'teacher'
     teacherData = allData.filter(teacher => teacher.position.includes('TEACHER'))
 
+    // Initialize MDB elements
     // Initialize data table (must come after data has been inserted into table)
     $('#absenceTable').DataTable({
         "scrollX": true,
@@ -33,7 +36,7 @@ async function main() {
 // Create the table body using HandlebarJs template
 function createTableBody(data) {
     // Retrieve the template data from the HTML (jQuery is used here).
-    var template = $('#absenceTableBody').html();
+    var template = $('#absenceTableBodyTemplate').html();
     // Compile the template data into a function
     var templateScript = Handlebars.compile(template);
 
@@ -92,7 +95,6 @@ function createChart(data) {
     data = data.sort((a, b) => parseFloat(b.total) - parseFloat(a.total));
     // get the top 10
     data = data.slice(0, 10);
-    console.log(data);
 
     var chartLabels = []
     var chartData = []
@@ -153,6 +155,34 @@ function setFontSize() {
     return fontSize;
 }
 
+// display all the absences of a single teacher.
+function showDetails(name){
+    let data = rawData;
+    index = data.findIndex(o => o.name == name.toUpperCase())
+    let docArr = data.splice(index, 1);
+    let doc = docArr[0]
+    doc.name = toTitleCase(doc.name);
+
+    // Retrieve the template data from the HTML (jQuery is used here).
+    var template = $('#detailsTemplate').html();
+    // Compile the template data into a function
+    var templateScript = Handlebars.compile(template);
+
+    var context = {
+        "data": doc
+    }
+
+    var html = templateScript(context);
+    // Insert the HTML code into the page
+    $(".details-wrapper").html(html);
+
+    // Initialize MDB treeview
+    $('.treeview-animated').mdbTreeview();
+    // smooth scroll to #details-section
+    scrollToSection('details-section');
+}
+
+// update chart styles on window resize
 $(window).resize(function() {
     // set size of xAxes labels
     let size = setFontSize();
@@ -162,4 +192,24 @@ $(window).resize(function() {
 
     // force chart size to update (min-height  is specified in css)
     $('.chart-wrapper').height(1);
+})
+
+// smooth scroll to different sections
+function scrollToSection(section) {
+    $('html,body').animate({
+        scrollTop: $('#' + section).offset().top
+    });
+}
+
+// HandlebarsJS helper function
+Handlebars.registerHelper("inc", function(value) {
+    return parseInt(value) + 1;
+});
+
+Handlebars.registerHelper("time", function(isPartial) {
+    return isPartial ? "Partial Day": "All Day";
+})
+
+Handlebars.registerHelper("note", function(note) {
+    return note != "" ? note : "N/A";
 })

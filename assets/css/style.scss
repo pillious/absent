@@ -52,7 +52,7 @@ html {
         }
 
         div.dataTables_wrapper {
-            padding: 3rem 10vw;
+            padding: 3rem 10vw 1rem;
 
             @include size(medium) {
                 padding: 1rem;
@@ -79,6 +79,12 @@ html {
             }
 
             .table {
+                tr {
+                    td:first-child:hover {
+                        cursor: pointer;                        
+                    }
+                }
+
                 @include size(medium) {
 
                     th,
@@ -130,6 +136,10 @@ html {
                     }
                 }
             }
+        }
+
+        .details-wrapper {
+            padding: 1rem 25vw 3rem;
         }
     }
 }
