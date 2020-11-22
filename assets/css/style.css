@@ -1,1 +1,108 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+html body {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+}
+
+html body .header {
+  width: 100vw;
+  text-align: center;
+  padding-top: 1rem;
+}
+
+html body .chart-wrapper {
+  padding: 3rem 15vw 0;
+  min-height: 600px;
+}
+
+@media (max-width: 861px) {
+  html body .chart-wrapper {
+    padding: 1rem;
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 450px) {
+  html body .chart-wrapper {
+    padding: 0.5rem 0.5rem 0;
+    min-height: 300px;
+  }
+}
+
+html body div.dataTables_wrapper {
+  padding: 3rem 10vw;
+}
+
+@media (max-width: 861px) {
+  html body div.dataTables_wrapper {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 450px) {
+  html body div.dataTables_wrapper {
+    padding: 0 0.5rem 0.5rem;
+  }
+}
+
+@media (max-width: 861px) {
+  html body div.dataTables_wrapper div.dataTables_length label {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 861px) {
+  html body div.dataTables_wrapper div.dataTables_filter label {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 861px) {
+  html body div.dataTables_wrapper .table th,
+  html body div.dataTables_wrapper .table td {
+    font-size: 12px;
+  }
+}
+
+html body div.dataTables_wrapper .table td {
+  font-weight: 400;
+}
+
+@media (max-width: 861px) {
+  html body div.dataTables_wrapper div.dataTables_info {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 861px) {
+  html body div.dataTables_wrapper div.dataTables_paginate {
+    font-size: 12px;
+  }
+}
+
+html body div.dataTables_wrapper div.dataTables_paginate .paginate_button:hover:not([disabled]) {
+  color: #000 !important;
+  background: #eee !important;
+  border-radius: .125rem;
+  border-color: #eee !important;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  -webkit-transition: all .3s linear;
+  transition: all .3s linear;
+}
+
+html body div.dataTables_wrapper div.dataTables_paginate span a.paginate_button.current, html body div.dataTables_wrapper div.dataTables_paginate span a.paginate_button.current:hover {
+  color: #fff !important;
+  background: #4285f4 !important;
+  border-color: #4285f4 !important;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  -webkit-transition: all .2s linear;
+  transition: all .2s linear;
+  border-radius: .125rem;
+}
+
+.form-control {
+  width: auto;
+  display: inline-block;
+}
+/*# sourceMappingURL=style.css.map */
