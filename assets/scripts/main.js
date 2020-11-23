@@ -156,11 +156,12 @@ function setFontSize() {
 }
 
 // display all the absences of a single teacher.
-function showDetails(name){
-    let data = rawData;
-    index = data.findIndex(o => o.name == name.toUpperCase())
-    let docArr = data.splice(index, 1);
-    let doc = docArr[0]
+async function showDetails(name) {
+    // .slice(0) required to make a copy of rawData
+    var data = rawData.slice(0);
+    index = data.findIndex(o => o["name"].toUpperCase() == name.toUpperCase())
+    var docArr = data.splice(index, 1);
+    var doc = docArr[0]
     doc.name = toTitleCase(doc.name);
 
     // Retrieve the template data from the HTML (jQuery is used here).

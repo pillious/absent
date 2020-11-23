@@ -1,6 +1,3 @@
-// 820px -> medium
-// mixins
-
 @mixin size($size) {
     $large: "(min-width: 862px)";
     $medium: "(max-width: 861px)";
@@ -23,6 +20,11 @@
             @content;
         }
     }
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 html {
@@ -140,6 +142,10 @@ html {
 
         .details-wrapper {
             padding: 1rem 25vw 3rem;
+
+            .card {
+                animation: fadein 0.5s;
+            }
         }
     }
 }
