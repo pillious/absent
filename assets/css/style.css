@@ -114,8 +114,8 @@ html body div.dataTables_wrapper div.dataTables_paginate .paginate_button:hover:
 
 html body div.dataTables_wrapper div.dataTables_paginate span a.paginate_button.current, html body div.dataTables_wrapper div.dataTables_paginate span a.paginate_button.current:hover {
   color: #fff !important;
-  background: #4285f4 !important;
-  border-color: #4285f4 !important;
+  background: #2096ff !important;
+  border-color: #2096ff !important;
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
           box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   -webkit-transition: all .2s linear;
