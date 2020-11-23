@@ -127,9 +127,33 @@ html body .details-wrapper {
   padding: 1rem 25vw 3rem;
 }
 
+@media (max-width: 861px) {
+  html body .details-wrapper {
+    padding: 1rem 15vw 3rem;
+  }
+}
+
+@media (max-width: 450px) {
+  html body .details-wrapper {
+    padding: 1rem 0.5rem 1rem;
+  }
+}
+
 html body .details-wrapper .card {
   -webkit-animation: fadein 0.5s;
           animation: fadein 0.5s;
+}
+
+@media (max-width: 861px) {
+  html body .details-wrapper .card h5 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 450px) {
+  html body .details-wrapper .card h5 {
+    font-size: 1rem;
+  }
 }
 
 .form-control {

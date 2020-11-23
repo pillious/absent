@@ -143,8 +143,26 @@ html {
         .details-wrapper {
             padding: 1rem 25vw 3rem;
 
+            @include size(medium) {
+                padding: 1rem 15vw 3rem;
+            }
+
+            @include size(small) {
+                padding: 1rem 0.5rem 1rem;
+            }
+
             .card {
                 animation: fadein 0.5s;
+
+                h5 {
+                    @include size(medium) {
+                        font-size: 18px;
+                    }
+
+                    @include size(small) {
+                        font-size: 1rem;
+                    }
+                }
             }
         }
     }
