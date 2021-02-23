@@ -15,6 +15,8 @@ async function main() {
 
     // only faculty whos position includes 'teacher'
     teacherData = allData.filter(teacher => teacher.position.includes('TEACHER'))
+    // filter out teachers who are "SPECED"
+    teacherData = teacherData.filter(teacher => !teacher.position.includes('SPECED'))
 
     // Initialize MDB elements
     // Initialize data table (must come after data has been inserted into table)
